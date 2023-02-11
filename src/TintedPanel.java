@@ -1,7 +1,7 @@
 public class TintedPanel extends Panel {
 
     public TintedPanel(int _x, int _y, int _width, int _height){
-        super(_x, _y, _width, _height);// calling the super/parent class constructor
+        super(_x, _y, _width, _height);
     }
 
     // overriding the inherited display method

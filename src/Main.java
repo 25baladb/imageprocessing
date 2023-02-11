@@ -68,20 +68,18 @@ public class Main extends PApplet {
 
      public void keyPressed(){
         if(key == 's'){
-            System.out.println("s pressed");
             Panel lastPanel = panels.remove(15);
             Panel firstPanel = panels.remove(0);
             panels.add(firstPanel);
             panels.add(0, lastPanel);
             int x = lastPanel.getX();
             int y = lastPanel.getY();
-
             lastPanel.setX(firstPanel.getX());
             lastPanel.setY(firstPanel.getY());
-
             firstPanel.setX(x);
             firstPanel.setY(y);
         }
+
         if(key == 'r'){
             Random rand = new Random();
             int i = rand.nextInt(15);
@@ -91,9 +89,8 @@ public class Main extends PApplet {
             int y = o.getY();
             int w = o.getWidth();
             int h = o.getHeight();
-            Panel r = new TintedPanel(x, y, w, h);
+            TintedPanel r = new TintedPanel(x, y, w, h);
             panels.add(i, r);
-            r.display();
         }
     }
 
