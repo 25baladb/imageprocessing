@@ -68,7 +68,8 @@ public class Main extends PApplet {
 
      public void keyPressed(){
         if(key == 's'){
-            Panel lastPanel = panels.remove(15);
+            int w = panels.size() - 1;
+            Panel lastPanel = panels.remove(w);
             Panel firstPanel = panels.remove(0);
             panels.add(firstPanel);
             panels.add(0, lastPanel);
@@ -83,16 +84,25 @@ public class Main extends PApplet {
         if(key == 'r'){
             Random rand = new Random();
             int i = rand.nextInt(15);
-            System.out.println(i);
-            Panel o = panels.remove(i);
+            Panel o = panels.get(i);
             int x = o.getX();
             int y = o.getY();
             int w = o.getWidth();
             int h = o.getHeight();
-            TintedPanel r = new TintedPanel(x, y, w, h);
-            panels.add(i, r);
+            panels.remove(i);
+            if(o instanceof TintedPanel){
+                Panel n = new ContrastedPanel (x, y, w, h);
+                n.setupImage("data/bunny.png");
+                panels.add(i, n);
+            }else {
+                TintedPanel r = new TintedPanel(x, y, w, h);
+                r.setupImage("data/bunny.png");
+                panels.add(i, r);
+            }
         }
     }
+
+    public void instanceOf(){}
 
     private void fancyBackground(){
         loadPixels();
